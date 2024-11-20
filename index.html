@@ -3,64 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gioco Online per Coppie ❤️</title>
-
-  <!-- Includi Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-
-  <script>
-    // Configurazione Firebase (con i dati forniti)
-    const firebaseConfig = {
-      apiKey: "AIzaSyB587rfkIlh5PiQH1oF0IO3sj-m4SAww6k",
-      authDomain: "couple-game-v3.firebaseapp.com",
-      projectId: "couple-game-v3",
-      storageBucket: "couple-game-v3.firebasestorage.app",
-      messagingSenderId: "200523668060",
-      appId: "1:200523668060:web:3e4c835679af19a67ae499"
-    };
-
-    // Inizializza Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore(); // Ottieni il riferimento al database Firestore
-  </script>
+  <title>Gioco Online - Domande</title>
 </head>
 <body>
   <h1>Gioco Online per Coppie ❤️</h1>
 
-  <!-- Creazione stanza -->
-  <div id="create-room">
-    <button id="generateRoomCode">Crea Stanza</button>
-    <div id="roomInfo" style="display: none;">
-      <p>Codice Stanza: <span id="roomCode"></span></p>
-      <p>Link da condividere: <a id="roomLink" href="#" target="_blank"></a></p>
-    </div>
+  <!-- Sezione Domanda -->
+  <div>
+    <h2>DOMANDA:</h2>
+    <p id="question">Caricamento domanda...</p> <!-- Qui viene mostrata la domanda -->
   </div>
 
-  <!-- Unisciti a una stanza -->
-  <div id="join-room">
-    <h2>Unisciti a una stanza</h2>
-    <input type="text" id="inputRoomCode" placeholder="Inserisci codice stanza">
-    <button id="joinRoom">Unisciti</button>
-  </div>
+  <button onclick="getRandomQuestion()">Carica Nuova Domanda</button> <!-- Bottone per caricare una nuova domanda -->
 
-  <!-- Benvenuto nella stanza -->
-  <div id="welcomeMessage" style="display: none;">
-    <h2>Benvenuto nella stanza!</h2>
-    <p>Stai giocando nella stanza con codice: <span id="welcomeRoomCode"></span></p>
-  </div>
-
-  <h2>Domanda</h2>
-  <div id="question">Caricamento domanda...</div>
-
-  <!-- Risposta -->
-  <h3>La tua risposta:</h3>
-  <textarea id="answerInput" placeholder="Scrivi la tua risposta..."></textarea>
-  <button id="submitAnswer">Invia Risposta</button>
-
-  <h3>Risposte inviate:</h3>
-  <div id="answersList"></div>
-
+  <!-- Aggiungi il tuo script Firebase e il nostro script.js -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
