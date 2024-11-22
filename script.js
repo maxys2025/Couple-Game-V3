@@ -24,26 +24,35 @@ const shuffledQuestions = shuffle(questions);
 const cards = document.querySelectorAll('.card');
 cards.forEach((card, index) => {
   const back = card.querySelector('.back');
+  const front = card.querySelector('.front');
+
   if (shuffledQuestions[index]) {
     const question = shuffledQuestions[index];
-    back.textContent = question.text;
-    back.setAttribute('data-category', question.category); // Aggiunge la categoria come attributo
+    back.textContent = question.text; // Testo della domanda
+    back.setAttribute('data-category', question.category); // Categoria
+    card.dataset.categoryColor = getComputedStyle(back).backgroundColor; // Salva il colore della categoria
   }
+
+  // Aggiungi il numero iniziale sul lato frontale
+  front.textContent = index + 1;
 });
 
 // Gestione del click per girare le tessere
 cards.forEach(card => {
   const inner = card.querySelector('.inner');
+  const front = card.querySelector('.front');
   const back = card.querySelector('.back');
 
   card.addEventListener('click', () => {
     if (inner.classList.contains('flipped')) {
-      // Se la tessera è girata, torna alla posizione originale
+      // Se la tessera è già girata, torna a mostrare il lato frontale con il colore della categoria
       inner.classList.remove('flipped');
+      front.style.backgroundColor = card.dataset.categoryColor; // Applica il colore della categoria
+      front.style.color = "white"; // Assicura che il testo sia visibile
     } else {
-      // Altrimenti gira la tessera e assegna il colore
+      // Altrimenti, gira la tessera e mostra il retro
       inner.classList.add('flipped');
-      back.style.backgroundColor = getComputedStyle(back).backgroundColor; // Mantiene il colore della categoria
+      back.style.backgroundColor = card.dataset.categoryColor; // Mantiene il colore della categoria
     }
   });
 });
