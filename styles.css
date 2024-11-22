@@ -1,3 +1,4 @@
+/* Stile generale */
 body {
   background-color: #333;
   display: flex;
@@ -10,21 +11,22 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 120px); /* Griglia 3 colonne */
+  grid-gap: 20px; /* Spaziatura tra tessere */
 }
 
+/* Tessera */
 .card {
   width: 120px;
   height: 160px;
-  perspective: 1000px; /* Necessario per l'effetto 3D */
+  perspective: 1000px; /* Effetto 3D */
 }
 
 .inner {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d; /* Mantiene il 3D */
-  transition: transform 0.6s; /* Velocità dell'animazione */
+  transition: transform 0.6s; /* Velocità del flip */
   cursor: pointer;
 }
 
@@ -32,6 +34,18 @@ body {
   transform: rotateY(180deg); /* Gira la tessera */
 }
 
+/* Colore per tessere già girate */
+.inner.flipped.permanent {
+  background-color: #27ae60; /* Colore verde per tessere girate */
+  color: white; /* Testo leggibile */
+}
+
+.inner.flipped.permanent .front,
+.inner.flipped.permanent .back {
+  background-color: #27ae60; /* Cambia il colore */
+}
+
+/* Lati delle tessere */
 .front,
 .back {
   position: absolute;
