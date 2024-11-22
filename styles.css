@@ -50,7 +50,13 @@ body {
 }
 
 .front {
-  background: #555;
+  background: #555; /* Grigio scuro */
+}
+
+.back {
+  background: #f39c12; /* Arancione di default */
+  transform: rotateY(180deg); /* Inizia capovolta */
+  color: white;
 }
 
 /* Colori delle categorie */
