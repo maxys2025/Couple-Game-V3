@@ -37,7 +37,13 @@ cards.forEach(card => {
   const back = card.querySelector('.back');
 
   card.addEventListener('click', () => {
-    inner.classList.add('flipped'); // Gira la tessera
-    back.style.backgroundColor = getComputedStyle(back).backgroundColor; // Mantiene il colore della categoria
+    if (inner.classList.contains('flipped')) {
+      // Se la tessera è girata, torna alla posizione originale
+      inner.classList.remove('flipped');
+    } else {
+      // Altrimenti gira la tessera e assegna il colore
+      inner.classList.add('flipped');
+      back.style.backgroundColor = getComputedStyle(back).backgroundColor; // Mantiene il colore della categoria
+    }
   });
 });
