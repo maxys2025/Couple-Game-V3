@@ -1,11 +1,11 @@
-// Lista delle domande
+// Lista delle domande con categorie e colori
 const questions = [
-  "Domanda 1?",
-  "Domanda 2?",
-  "Domanda 3?",
-  "Domanda 4?",
-  "Domanda 5?",
-  "Domanda 6?",
+  { text: "Qual è lo sport più praticato al mondo?", category: "sport" },
+  { text: "Chi ha scoperto la gravità?", category: "scienza" },
+  { text: "Quando è stata scoperta l'America?", category: "storia" },
+  { text: "Quanti giocatori ci sono in una squadra di calcio?", category: "sport" },
+  { text: "Qual è il pianeta più vicino al sole?", category: "scienza" },
+  { text: "Chi era Napoleone?", category: "storia" },
 ];
 
 // Funzione per mescolare l'array
@@ -20,26 +20,24 @@ function shuffle(array) {
 // Mescola le domande
 const shuffledQuestions = shuffle(questions);
 
-// Applica le domande alle tessere
+// Applica le domande e le categorie alle tessere
 const cards = document.querySelectorAll('.card');
 cards.forEach((card, index) => {
   const back = card.querySelector('.back');
   if (shuffledQuestions[index]) {
-    back.textContent = shuffledQuestions[index];
+    const question = shuffledQuestions[index];
+    back.textContent = question.text;
+    back.setAttribute('data-category', question.category); // Aggiunge la categoria come attributo
   }
 });
 
 // Gestione del click per girare le tessere
 cards.forEach(card => {
-  card.addEventListener('click', () => {
-    const inner = card.querySelector('.inner');
-    inner.classList.toggle('flipped'); // Gira la tessera
+  const inner = card.querySelector('.inner');
+  const back = card.querySelector('.back');
 
-    // Aggiungi una classe "permanent" al primo clic
-    if (!inner.classList.contains('permanent')) {
-      setTimeout(() => {
-        inner.classList.add('permanent'); // Segna la tessera come girata
-      }, 600); // Aspetta che finisca l'animazione del flip
-    }
+  card.addEventListener('click', () => {
+    inner.classList.add('flipped'); // Gira la tessera
+    back.style.backgroundColor = getComputedStyle(back).backgroundColor; // Mantiene il colore della categoria
   });
 });
