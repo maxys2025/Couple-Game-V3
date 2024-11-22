@@ -34,17 +34,6 @@ body {
   transform: rotateY(180deg); /* Gira la tessera */
 }
 
-/* Colore per tessere già girate */
-.inner.flipped.permanent {
-  background-color: #27ae60; /* Colore verde per tessere girate */
-  color: white; /* Testo leggibile */
-}
-
-.inner.flipped.permanent .front,
-.inner.flipped.permanent .back {
-  background-color: #27ae60; /* Cambia il colore */
-}
-
 /* Lati delle tessere */
 .front,
 .back {
@@ -64,7 +53,15 @@ body {
   background: #555;
 }
 
-.back {
-  background: #f39c12;
-  transform: rotateY(180deg); /* Inizia capovolta */
+/* Colori delle categorie */
+.back[data-category="sport"] {
+  background: #3498db; /* Blu */
+}
+
+.back[data-category="scienza"] {
+  background: #e74c3c; /* Rosso */
+}
+
+.back[data-category="storia"] {
+  background: #27ae60; /* Verde */
 }
