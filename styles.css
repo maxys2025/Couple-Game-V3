@@ -41,9 +41,9 @@ body {
   width: 100%;
   height: 100%;
   backface-visibility: hidden; /* Nasconde il lato opposto */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; /* Per centrare il contenuto */
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center; /* Centra verticalmente */
   font-size: 20px;
   color: white;
   border-radius: 8px;
@@ -56,7 +56,6 @@ body {
 .back {
   background: #f39c12; /* Arancione di default */
   transform: rotateY(180deg); /* Inizia capovolta */
-  color: white;
 }
 
 /* Colori delle categorie */
