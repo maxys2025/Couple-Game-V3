@@ -11,8 +11,12 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 120px); /* Griglia 3 colonne */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Colonne dinamiche */
   grid-gap: 20px; /* Spaziatura tra tessere */
+  width: 100%; /* Fa sì che occupi tutta la larghezza */
+  max-width: 1200px; /* Limita la larghezza massima se necessario */
+  padding: 10px; /* Aggiunge margine interno ai lati */
+  box-sizing: border-box; /* Include il padding nel calcolo della larghezza */
 }
 
 /* Tessera */
